@@ -34,7 +34,7 @@ A visual tool for generating color combinations for lens-based sculptures. This 
 
 ## Usage
 
-Visit [your-deployed-url] to use the generator.
+Visit https://cycle-lens-generator.vercel.app/ to use the generator.
 
 ## Built With
 - React
