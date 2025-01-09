@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 const ColorPaletteGenerator = () => {
   const COLORS = {
@@ -176,71 +175,69 @@ const ColorPaletteGenerator = () => {
   ];
 
   return (
-    <Card className="w-full max-w-4xl">
-      <CardHeader>
-        <CardTitle>Sculpture Color Palette Generator</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-lg font-medium mb-2">Color Palettes</h3>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {paletteTypes.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => {
-                    setSelectedPalette(type);
-                    generatePalette(type, selectedDistribution);
-                  }}
-                  className={`px-4 py-2 rounded capitalize ${
-                    selectedPalette === type 
-                      ? 'bg-blue-500 text-white' 
-                      : 'bg-gray-200 hover:bg-gray-300'
-                  }`}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-2">Distribution Patterns</h3>
-            <div className="flex flex-wrap gap-4">
-              {Object.keys(distributions).map((pattern) => (
-                <label key={pattern} className="flex items-center space-x-2">
-                  <input
-                    type="radio"
-                    name="distribution"
-                    checked={selectedDistribution === pattern}
-                    onChange={() => {
-                      setSelectedDistribution(pattern);
-                      generatePalette(selectedPalette, pattern);
-                    }}
-                    className="form-radio"
-                  />
-                  <span className="capitalize">{pattern}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-5 gap-4">
-            {generatedColors.map((color, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div
-                  className="w-12 h-12 rounded-full border border-gray-200"
-                  style={{ backgroundColor: color }}
-                />
-                <span className="text-xs mt-1">
-                  {Object.entries(COLORS).find(([name, hex]) => hex === color)?.[0] || 'unknown'}
-                </span>
-              </div>
+    <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold">Sculpture Color Palette Generator</h1>
+      </div>
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-lg font-medium mb-2">Color Palettes</h3>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {paletteTypes.map((type) => (
+              <button
+                key={type}
+                onClick={() => {
+                  setSelectedPalette(type);
+                  generatePalette(type, selectedDistribution);
+                }}
+                className={`px-4 py-2 rounded capitalize ${
+                  selectedPalette === type 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-gray-200 hover:bg-gray-300'
+                }`}
+              >
+                {type}
+              </button>
             ))}
           </div>
         </div>
-      </CardContent>
-    </Card>
+
+        <div>
+          <h3 className="text-lg font-medium mb-2">Distribution Patterns</h3>
+          <div className="flex flex-wrap gap-4">
+            {Object.keys(distributions).map((pattern) => (
+              <label key={pattern} className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="distribution"
+                  checked={selectedDistribution === pattern}
+                  onChange={() => {
+                    setSelectedDistribution(pattern);
+                    generatePalette(selectedPalette, pattern);
+                  }}
+                  className="form-radio"
+                />
+                <span className="capitalize">{pattern}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-5 gap-4">
+          {generatedColors.map((color, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div
+                className="w-12 h-12 rounded-full border border-gray-200"
+                style={{ backgroundColor: color }}
+              />
+              <span className="text-xs mt-1">
+                {Object.entries(COLORS).find(([name, hex]) => hex === color)?.[0] || 'unknown'}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
