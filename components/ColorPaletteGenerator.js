@@ -177,7 +177,7 @@ const ColorPaletteGenerator = () => {
   return (
     <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Sculpture Color Palette Generator</h1>
+        <h1 className="text-2xl font-bold">Cycle     Lens     Color     Options</h1>
       </div>
       <div className="space-y-6">
         <div>
