@@ -227,8 +227,13 @@ const ColorPaletteGenerator = () => {
           {generatedColors.map((color, index) => (
             <div key={index} className="flex flex-col items-center">
               <div
-                className="w-12 h-12 rounded-full border border-gray-200"
-                style={{ backgroundColor: color }}
+                style={{ 
+                  backgroundColor: color,
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  border: '1px solid #e5e7eb'
+                }}
               />
               <span className="text-xs mt-1">
                 {Object.entries(COLORS).find(([name, hex]) => hex === color)?.[0] || 'unknown'}
